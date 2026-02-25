@@ -1,7 +1,7 @@
 import pygame
 
 
-class Game:
+class BrickBreaker:
 
     def __init__(self, screen):
         self.screen = screen
@@ -64,13 +64,13 @@ class Game:
     # Movimento do player
     # -----------------------------
     def playerMotion(self):
-      keys = pygame.key.get_pressed()
+        keys = pygame.key.get_pressed()
 
-      if keys[pygame.K_LEFT] and self.player.x > 0:
-          self.player.x -= self.playerSpeed
+        if keys[pygame.K_LEFT] and self.player.x > 0:
+            self.player.x -= self.playerSpeed
 
-      if keys[pygame.K_RIGHT] and self.player.x < self.displaySize[0] - self.playerSize:
-          self.player.x += self.playerSpeed
+        if keys[pygame.K_RIGHT] and self.player.x < self.displaySize[0] - self.playerSize:
+            self.player.x += self.playerSpeed
 
     # -----------------------------
     # Movimento da bola
@@ -139,7 +139,8 @@ class Game:
     # -----------------------------
     def drawScore(self):
         font = pygame.font.Font("freesansbold.ttf", 20)
-        text = font.render(f"Score: {self.gameScore}", True, self.colors["yellow"])
+        text = font.render(f"Score: {self.gameScore}",
+                           True, self.colors["yellow"])
         self.screen.blit(text, (0, 780))
 
         if self.gameScore == self.totalBricks:
@@ -157,7 +158,8 @@ class Game:
 
         font = pygame.font.Font("freesansbold.ttf", 40)
         text = font.render(textValue, True, self.colors[colorType])
-        rect = text.get_rect(center=(self.displaySize[0] // 2, self.displaySize[1] // 2))
+        rect = text.get_rect(
+            center=(self.displaySize[0] // 2, self.displaySize[1] // 2))
         self.screen.blit(text, rect)
 
     # -----------------------------
@@ -174,7 +176,10 @@ class Game:
                     return "QUIT"
 
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    return "MENU"
+                    return {
+                        "status": "MENU",
+                        "score": self.gameScore
+                    }
 
             self.playerMotion()  # <- aqui, fora do for
 
@@ -185,4 +190,7 @@ class Game:
             pygame.display.flip()
             clock.tick(60)
 
-        return "MENU"
+        return {
+            "status": "MENU",
+            "score": self.gameScore
+        }
