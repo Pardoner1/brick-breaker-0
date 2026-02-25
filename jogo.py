@@ -95,7 +95,12 @@ def ballMotion(ball):
 def drawGameStart():
   mainDisplay.fill(colors["black"])
   pygame.draw.rect(mainDisplay, colors["blue"], player)
-  pygame.draw.rect(mainDisplay, colors["white"], ball)
+  pygame.draw.circle(
+    mainDisplay,
+    colors["white"],
+    ball.center,
+    ballSize // 2
+)
 
 def drawBricks(bricks):
   for brick in bricks:
