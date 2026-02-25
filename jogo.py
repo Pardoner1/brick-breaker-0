@@ -5,7 +5,7 @@ pygame.init()
 
 displaySize = (800, 800)
 mainDisplay = pygame.display.set_mode(displaySize)
-pygame.display.set_caption("Brick Breaker Youtube")
+pygame.display.set_caption("Brick Breaker")
 
 colors = {
   "white": (255, 255, 255),
