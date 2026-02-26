@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv.*
+
+# Pygame específico
+*.pyc
+*.pyo
+
+# Ambiente Virtual
+venv_mobile/
+venv_desktop/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Projeto específico
+logs/
+*.log
+instance/
+.webassets-cache
+
+# Distribuição / empacotamento
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Mobile específico (se usar buildozer ou similar)
+.buildozer/
+buildozer.spec
+bin/
+*.apk
+*.aab
+
+# Testes
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
