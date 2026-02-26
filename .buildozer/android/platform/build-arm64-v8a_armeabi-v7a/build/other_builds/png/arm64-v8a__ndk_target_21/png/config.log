@@ -37,6 +37,7 @@ PATH: /home/alex-nascimento/.pyenv/bin
 PATH: /home/alex-nascimento/.config/Code/User/globalStorage/github.copilot-chat/debugCommand
 PATH: /home/alex-nascimento/.config/Code/User/globalStorage/github.copilot-chat/copilotCli
 PATH: /home/alex-nascimento/.local/bin
+PATH: /home/alex-nascimento/.pyenv/bin
 PATH: /home/alex-nascimento/.local/bin
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
@@ -52,7 +53,7 @@ PATH: /home/alex-nascimento/.local/bin
 PATH: /home/alex-nascimento/.local/bin
 PATH: /home/alex-nascimento/.local/bin
 PATH: /home/alex-nascimento/.vscode/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts
-PATH: /home/alex-nascimento/.local/bin
+PATH: /home/alex-nascimento/.vscode/extensions/vscjava.vscode-java-debug-0.58.5/bundled/scripts/noConfigScripts
 PATH: /home/alex-nascimento/.local/bin
 
 
@@ -486,7 +487,7 @@ conftest.c:48:6: note: 'pow' is a builtin with type 'double (double, double)'
 1 warning generated.
 ld: error: undefined symbol: pow
 >>> referenced by conftest.c
->>>               /tmp/conftest-268619.o:(main)
+>>>               /tmp/conftest-ac1c67.o:(main)
 clang-14: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13016: $? = 1
 configure: failed program was:

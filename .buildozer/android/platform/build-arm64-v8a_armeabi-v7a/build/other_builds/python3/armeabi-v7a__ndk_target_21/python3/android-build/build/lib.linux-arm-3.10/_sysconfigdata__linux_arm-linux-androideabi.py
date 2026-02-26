@@ -76,6 +76,7 @@ build_time_vars = {'ABIFLAGS': '',
                 "'--exec-prefix=/usr/local' "
                 "'--enable-loadable-sqlite-extensions' "
                 "'--with-build-python=/home/alex-nascimento/Trabalho/Projetos/pygame/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/hostpython3/desktop/hostpython3/native-build/python3' "
+                "'--with-openssl=/home/alex-nascimento/Trabalho/Projetos/pygame/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/arm64-v8a__ndk_target_21/openssl1.1' "
                 "'--with-openssl=/home/alex-nascimento/Trabalho/Projetos/pygame/.buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/other_builds/openssl/armeabi-v7a__ndk_target_21/openssl1.1' "
                 "'build_alias=x86_64-pc-linux-gnu' "
                 "'host_alias=arm-linux-androideabi' "

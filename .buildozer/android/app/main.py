@@ -4,8 +4,7 @@ from space_shooter import SpaceShooter
 
 pygame.init()
 
-info = pygame.display.Info()
-screen = pygame.display.set_mode((info.current_w, info.current_h))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Game Hub")
 
 clock = pygame.time.Clock()
@@ -29,8 +28,8 @@ selected_index = 0
 def drawMenu():
     screen.fill((20, 20, 20))
 
-    titleFont = pygame.font.Font(None, 60)
-    itemFont = pygame.font.Font(None, 40)
+    titleFont = pygame.font.SysFont(None, size)
+    itemFont = pygame.font.SysFont(None, size)
 
     title = titleFont.render("Game Hub", True, (255, 255, 255))
     screen.blit(title, (300, 100))
@@ -60,23 +59,19 @@ while appRunning:
         if event.type == pygame.QUIT:
             appRunning = False
 
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = event.pos
+            
+            for index, game_name in enumerate(games.keys()):
+                rect = pygame.Rect(200, 250 + index * 60, 600, 50)
+                if rect.collidepoint(mouse_x, mouse_y):
+                    selected_index = index
+                    game_name = list(games.keys())[selected_index]
+                    game_class = games[game_name]["class"]
 
-            if event.key == pygame.K_UP:
-                selected_index = max(0, selected_index - 1)
-
-            if event.key == pygame.K_DOWN:
-                selected_index = min(len(games) - 1, selected_index + 1)
-
-            if event.key == pygame.K_RETURN:
-
-                game_name = list(games.keys())[selected_index]
-                game_class = games[game_name]["class"]
-
-                game_instance = game_class(screen)
-                result = game_instance.run()
-
-                games[game_name]["last_score"] = result["score"]
+                    game_instance = game_class(screen)
+                    result = game_instance.run()
+                    games[game_name]["last_score"] = result["score"]
 
                 if result["status"] == "QUIT":
                     appRunning = False

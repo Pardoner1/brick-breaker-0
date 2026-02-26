@@ -4,8 +4,7 @@ from space_shooter import SpaceShooter
 
 pygame.init()
 
-info = pygame.display.Info()
-screen = pygame.display.set_mode((info.current_w, info.current_h))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Game Hub")
 
 clock = pygame.time.Clock()
@@ -29,8 +28,8 @@ selected_index = 0
 def drawMenu():
     screen.fill((20, 20, 20))
 
-    titleFont = pygame.font.Font(None, 60)
-    itemFont = pygame.font.Font(None, 40)
+    titleFont = pygame.font.SysFont(None, size)
+    itemFont = pygame.font.SysFont(None, size)
 
     title = titleFont.render("Game Hub", True, (255, 255, 255))
     screen.blit(title, (300, 100))
@@ -50,37 +49,35 @@ def drawMenu():
         screen.blit(text, (200, 250 + index * 60))
 
 
-while appRunning:
+current_state = "menu"
+current_game = None
 
-    drawMenu()
-    pygame.display.flip()
+while appRunning:
 
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             appRunning = False
 
-        if event.type == pygame.KEYDOWN:
+        if current_state == "menu":
+            handle_menu_event(event)
 
-            if event.key == pygame.K_UP:
-                selected_index = max(0, selected_index - 1)
+        elif current_state == "game":
+            current_game.handle_event(event)
 
-            if event.key == pygame.K_DOWN:
-                selected_index = min(len(games) - 1, selected_index + 1)
+    if current_state == "menu":
+        drawMenu()
 
-            if event.key == pygame.K_RETURN:
+    elif current_state == "game":
+        current_game.update()
+        current_game.draw()
 
-                game_name = list(games.keys())[selected_index]
-                game_class = games[game_name]["class"]
+        if current_game.gameFinished:
+            games[current_game_name]["last_score"] = current_game.score
+            current_state = "menu"
+            current_game = None
 
-                game_instance = game_class(screen)
-                result = game_instance.run()
-
-                games[game_name]["last_score"] = result["score"]
-
-                if result["status"] == "QUIT":
-                    appRunning = False
-
+    pygame.display.flip()
     clock.tick(45)
 
 pygame.quit()
